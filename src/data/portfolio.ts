@@ -585,88 +585,89 @@ This was built to order for an external client. I took part in preparing the off
   },
 
   /* ---------------------------------------------------------------- */
-  {
-    id: "produkt-hub",
-    year: { pl: "2026 — obecnie", en: "2026 — present" },
-    title: {
-      pl: "Produkt Hub — dobór produktów oparty o RAG",
-      en: "Produkt Hub — RAG-based product selection",
-    },
-    summary: {
-      pl: "Projekt własny. Użytkownik opisuje swój problem zwykłym językiem, a narzędzie dobiera z katalogu producenta pojedyncze produkty i całe systemy powłok.",
-      en: "A personal project. The user describes their problem in plain language and the tool selects individual products and complete coating systems from the manufacturer's catalogue.",
-    },
-    role: { pl: "Projekt własny, całość", en: "Personal project, end to end" },
-    stack: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Supabase",
-      "pgvector",
-      "Gemini",
-      "PostgreSQL",
-    ],
-    metrics: [
-      {
-        value: "2",
-        label: {
-          pl: "metody wyszukiwania w jednym rankingu",
-          en: "search methods in one ranking",
-        },
-      },
-      {
-        value: "0,645",
-        label: {
-          pl: "próg trafności odpowiedzi",
-          en: "answer relevance threshold",
-        },
-      },
-      {
-        value: "4",
-        label: { pl: "języki interfejsu", en: "interface languages" },
-      },
-    ],
-    body: {
-      pl: `
-### Skąd pomysł
-
-Rozmawiałem ze słoweńskim producentem chemii budowlanej i po przejrzeniu jego strony doszedłem do wniosku, że katalog jest nie do przejścia dla kogoś spoza branży. Rzadko wybiera się jeden produkt — zwykle trzeba złożyć system z trzech, a bez wiedzy fachowej nie wiadomo, od czego zacząć.
-
-### Co zbudowałem
-
-**Wyszukiwanie hybrydowe.** Zapytanie idzie równolegle przez wyszukiwanie wektorowe po znaczeniu i pełnotekstowe po słowach. Dwa niezależne rankingi scalam metodą Reciprocal Rank Fusion, więc słabość jednej metody nadrabia druga — semantyka radzi sobie z opisem problemu, pełnotekstowe z konkretnymi symbolami produktów.
-
-**Narzędzie, które nie zgaduje.** Jeśli najlepsze dopasowanie jest poniżej progu trafności, narzędzie nie wypycha wyników na siłę. Mówi, że nie ma trafnego dopasowania, i podpowiada, co doprecyzować — na przykład podłoże i środowisko. To była świadoma decyzja: pewna, ale błędna odpowiedź jest w tym zastosowaniu gorsza niż brak odpowiedzi.
-
-**Dane i wdrożenie.** Cały potok od karty technicznej producenta w PDF, przez czyszczenie, po indeksowanie. Baza jest wielodostępna z Row Level Security od pierwszego dnia — anonimowy użytkownik widzi wyłącznie publiczny katalog, a zapytania ofertowe czyta tylko serwer. Jest też wersja do osadzenia na stronie klienta i interfejs w czterech językach.
-
-### Gdzie to jest
-
-Demo jest publiczne i działa bez logowania. Producent zapytał o wdrożenie u siebie, model rozliczeń i integrację z własnymi narzędziami — rozmowy trwają.
-`,
-      en: `
-### Where it came from
-
-I was talking to a Slovenian construction chemicals manufacturer, and after going through their website I concluded the catalogue is impenetrable for anyone outside the trade. You rarely pick a single product — usually you have to assemble a system of three, and without domain knowledge there is no obvious place to start.
-
-### What I built
-
-**Hybrid search.** A query runs through vector search by meaning and full-text search by words in parallel. The two independent rankings are merged with Reciprocal Rank Fusion, so each method covers the other's weakness — semantics handles a described problem, full-text handles specific product codes.
-
-**A tool that does not guess.** If the best match falls below the relevance threshold, the tool does not push results anyway. It says there is no good match and suggests what to specify — the substrate and the environment, for instance. That was a deliberate decision: in this context a confident wrong answer is worse than no answer.
-
-**Data and deployment.** The full pipeline from the manufacturer's technical data sheets in PDF, through cleaning, to indexing. The database is multi-tenant with Row Level Security from day one — anonymous users see only the public catalogue, and enquiries are readable by the server alone. There is also an embeddable version for the client's website and an interface in four languages.
-
-### Where it is
-
-The demo is public and works without logging in. The manufacturer asked about deploying it, the commercial model and integration with their own tools — talks are ongoing.
-`,
-    },
-    images: [],
-    liveUrl: "https://produkt-hub.vercel.app",
-    liveIsOpen: true,
-    repoIsPrivate: true,
-  },
+  // --- UKRYTE: Produkt Hub. Odkomentuj ponizszy blok, aby przywrocic. ---
+//   {
+//     id: "produkt-hub",
+//     year: { pl: "2026 — obecnie", en: "2026 — present" },
+//     title: {
+//       pl: "Produkt Hub — dobór produktów oparty o RAG",
+//       en: "Produkt Hub — RAG-based product selection",
+//     },
+//     summary: {
+//       pl: "Projekt własny. Użytkownik opisuje swój problem zwykłym językiem, a narzędzie dobiera z katalogu producenta pojedyncze produkty i całe systemy powłok.",
+//       en: "A personal project. The user describes their problem in plain language and the tool selects individual products and complete coating systems from the manufacturer's catalogue.",
+//     },
+//     role: { pl: "Projekt własny, całość", en: "Personal project, end to end" },
+//     stack: [
+//       "Next.js",
+//       "React",
+//       "TypeScript",
+//       "Supabase",
+//       "pgvector",
+//       "Gemini",
+//       "PostgreSQL",
+//     ],
+//     metrics: [
+//       {
+//         value: "2",
+//         label: {
+//           pl: "metody wyszukiwania w jednym rankingu",
+//           en: "search methods in one ranking",
+//         },
+//       },
+//       {
+//         value: "0,645",
+//         label: {
+//           pl: "próg trafności odpowiedzi",
+//           en: "answer relevance threshold",
+//         },
+//       },
+//       {
+//         value: "4",
+//         label: { pl: "języki interfejsu", en: "interface languages" },
+//       },
+//     ],
+//     body: {
+//       pl: `
+// ### Skąd pomysł
+// 
+// Rozmawiałem ze słoweńskim producentem chemii budowlanej i po przejrzeniu jego strony doszedłem do wniosku, że katalog jest nie do przejścia dla kogoś spoza branży. Rzadko wybiera się jeden produkt — zwykle trzeba złożyć system z trzech, a bez wiedzy fachowej nie wiadomo, od czego zacząć.
+// 
+// ### Co zbudowałem
+// 
+// **Wyszukiwanie hybrydowe.** Zapytanie idzie równolegle przez wyszukiwanie wektorowe po znaczeniu i pełnotekstowe po słowach. Dwa niezależne rankingi scalam metodą Reciprocal Rank Fusion, więc słabość jednej metody nadrabia druga — semantyka radzi sobie z opisem problemu, pełnotekstowe z konkretnymi symbolami produktów.
+// 
+// **Narzędzie, które nie zgaduje.** Jeśli najlepsze dopasowanie jest poniżej progu trafności, narzędzie nie wypycha wyników na siłę. Mówi, że nie ma trafnego dopasowania, i podpowiada, co doprecyzować — na przykład podłoże i środowisko. To była świadoma decyzja: pewna, ale błędna odpowiedź jest w tym zastosowaniu gorsza niż brak odpowiedzi.
+// 
+// **Dane i wdrożenie.** Cały potok od karty technicznej producenta w PDF, przez czyszczenie, po indeksowanie. Baza jest wielodostępna z Row Level Security od pierwszego dnia — anonimowy użytkownik widzi wyłącznie publiczny katalog, a zapytania ofertowe czyta tylko serwer. Jest też wersja do osadzenia na stronie klienta i interfejs w czterech językach.
+// 
+// ### Gdzie to jest
+// 
+// Demo jest publiczne i działa bez logowania. Producent zapytał o wdrożenie u siebie, model rozliczeń i integrację z własnymi narzędziami — rozmowy trwają.
+// `,
+//       en: `
+// ### Where it came from
+// 
+// I was talking to a Slovenian construction chemicals manufacturer, and after going through their website I concluded the catalogue is impenetrable for anyone outside the trade. You rarely pick a single product — usually you have to assemble a system of three, and without domain knowledge there is no obvious place to start.
+// 
+// ### What I built
+// 
+// **Hybrid search.** A query runs through vector search by meaning and full-text search by words in parallel. The two independent rankings are merged with Reciprocal Rank Fusion, so each method covers the other's weakness — semantics handles a described problem, full-text handles specific product codes.
+// 
+// **A tool that does not guess.** If the best match falls below the relevance threshold, the tool does not push results anyway. It says there is no good match and suggests what to specify — the substrate and the environment, for instance. That was a deliberate decision: in this context a confident wrong answer is worse than no answer.
+// 
+// **Data and deployment.** The full pipeline from the manufacturer's technical data sheets in PDF, through cleaning, to indexing. The database is multi-tenant with Row Level Security from day one — anonymous users see only the public catalogue, and enquiries are readable by the server alone. There is also an embeddable version for the client's website and an interface in four languages.
+// 
+// ### Where it is
+// 
+// The demo is public and works without logging in. The manufacturer asked about deploying it, the commercial model and integration with their own tools — talks are ongoing.
+// `,
+//     },
+//     images: [],
+//     liveUrl: "https://produkt-hub.vercel.app",
+//     liveIsOpen: true,
+//     repoIsPrivate: true,
+//   },
   /* ---------------------------------------------------------------- */
   {
     id: "sklep-pasmanteria",
