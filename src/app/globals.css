@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+/* ============================================================
+   System projektowy — „dokument techniczny"
+   Ciepły papier, głęboki atrament, jeden akcent w terakocie.
+   ============================================================ */
+
+@theme {
+  --font-display: var(--font-display), Georgia, serif;
+  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --color-paper: #f5f2eb;
+  --color-paper-raised: #fbf9f5;
+  --color-paper-sunk: #ece7dc;
+  --color-ink: #17191d;
+  --color-ink-soft: #575c66;
+  --color-ink-faint: #8e939e;
+  --color-rule: #dad4c6;
+  --color-rule-soft: #e6e1d5;
+  --color-accent: #b4462a;
+  --color-accent-wash: #f0e3de;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-feature-settings: "kern", "liga";
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-paper-raised);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer utilities {
+  /* Ziarno papieru — bardzo delikatne, buduje fakturę tła */
+  .paper-grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Siatka milimetrowa — tylko w strefie nagłówka */
+  .blueprint-grid {
+    background-image: linear-gradient(
+        to right,
+        var(--color-rule-soft) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, var(--color-rule-soft) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: linear-gradient(to bottom, black 0%, transparent 85%);
+  }
+
+  /* Wejście elementów po załadowaniu strony */
+  .reveal {
+    animation: reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes reveal {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Treść case study renderowana z markdownu */
+.prose-doc {
+  color: var(--color-ink-soft);
+  line-height: 1.75;
+}
+.prose-doc h3 {
+  font-family: var(--font-display), Georgia, serif;
+  color: var(--color-ink);
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+.prose-doc h3:first-child {
+  margin-top: 0;
+}
+.prose-doc p {
+  margin-bottom: 1rem;
+}
+.prose-doc strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.prose-doc ul {
+  margin: 1rem 0;
+  padding-left: 0;
+  list-style: none;
+}
+.prose-doc li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+.prose-doc li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 0.5rem;
+  height: 1px;
+  background: var(--color-accent);
+}
